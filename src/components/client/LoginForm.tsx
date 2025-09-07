@@ -16,7 +16,6 @@ const LoginForm = () => {
                         </svg>
                     </div>
                 </div>
-
                 <div>
                     <label htmlFor="password">Password</label>
                     <div className='relative'>
@@ -35,10 +34,7 @@ const LoginForm = () => {
                         </label>
                     </div>
                     <div>
-                        <button
-                            type="button"
-                            className="text-[#1D00FD] text-sm hover:underline focus:outline-none"
-                        >
+                        <button type="button" className="text-[#1D00FD] text-sm hover:underline focus:outline-none">
                             Forgot Password?
                         </button>
                     </div>

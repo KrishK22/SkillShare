@@ -1,16 +1,10 @@
 import React from 'react'
-import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card"
-import SignupForm from '@/components/client/SignupForm'
+import Image from 'next/image'
 import Link from 'next/link'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, } from "@/components/ui/card"
+import SignupForm from '@/components/client/SignupForm'
 import { Separator } from "@/components/ui/separator"
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
 
 
 const Signup = () => {
@@ -21,7 +15,6 @@ const Signup = () => {
                     <CardTitle className='text-[#0F172A] font-medium text-2xl text-center '>Sign up</CardTitle>
                 </CardHeader>
                 <CardContent className=' w-full' >
-                    {/* <LoginForm /> */}
                     <SignupForm />
                 </CardContent>
                 <CardFooter className='w-full justify-center'>
@@ -43,7 +36,6 @@ const Signup = () => {
                 </CardFooter>
             </Card>
             <div className='hidden md:block h-auto w-auto ml-8'>
-                {/* <Image src="collaborate.svg" alt="collaborate" width={670} height={513} className='' /> */}
                 <img src="collaborate.svg" alt="Collaboration illustration" className='w-[670px] h-auto object-contain' />
             </div>
         </div>

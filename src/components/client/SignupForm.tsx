@@ -1,12 +1,19 @@
+"use client"
 import React from 'react'
 import { Input } from '../ui/input'
-import { Checkbox } from '@radix-ui/react-checkbox'
 import { Button } from '../ui/button'
 
 const SignupForm = () => {
+
+
+
+
     return (
         <div>
-            <form action="" className=' p-1 flex flex-col gap-4 w-full'>
+            <form action={async (FormData) => {
+                
+            }
+            } className=' p-1 flex flex-col gap-4 w-full'>
                 <div>
                     <label htmlFor="name">Name</label>
                     <div className='relative'>
@@ -33,8 +40,6 @@ const SignupForm = () => {
                         </svg>
                     </div>
                 </div>
-
-
                 <Button type='submit' className='bg-[#7B5FF1] hover:bg-[#886ef3] '>Sign up</Button>
             </form>
         </div>
