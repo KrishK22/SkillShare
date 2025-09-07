@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 import {
     DropdownMenu,
@@ -10,6 +10,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Button } from '../ui/button'
 
 
 
@@ -25,37 +26,62 @@ const Navbar = () => {
                         <Image src="/Logo.svg" alt="SkillShare" width={70} height={70} className='object-contain' />
                     </li>
                     <div className='flex items-center  '>
-                        <li className="mx-4 cursor-pointer hover:text-blue-600 transition-colors">
-                            <a href="">Home</a>
+                        <li className="mx-4 cursor-pointer ">
+                            <a href="#" className="cursor-pointer relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[#886ef3]  after:transition-all after:duration-300  hover:after:left-0 hover:after:w-full"  >Home</a>
                         </li>
-                        <li className="mx-4 cursor-pointer hover:text-blue-600 transition-colors">
-                            <a href="">Matches</a>
+                        <li className="cursor-pointer relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[#886ef3] after:transition-all after:duration-300  hover:after:left-0 hover:after:w-full">
+
+                            <a href="" >Matches</a>
                         </li>
-                        <li className="mx-4 cursor-pointer hover:text-blue-600 transition-colors">
-                            <a href="">Explore</a>
-                        </li>
-                        <li className="mx-4">
-                            <DropdownMenu>
-                                <DropdownMenuTrigger>Open</DropdownMenuTrigger>
-                                <DropdownMenuContent>
-                                    <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                                    <DropdownMenuSeparator />
-                                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                                    <DropdownMenuItem>Billing</DropdownMenuItem>
-                                    <DropdownMenuItem>Team</DropdownMenuItem>
-                                    <DropdownMenuItem>Subscription</DropdownMenuItem>
+                        <li className="mx-4 cursor-pointer ">
+                            <DropdownMenu >
+                                <DropdownMenuTrigger className=" cursor-pointer relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[#886ef3] after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full">
+                                    Explore
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent >
+                                    <DropdownMenuItem>Code Lab </DropdownMenuItem>
+                                    <DropdownMenuItem>History of Sessions </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
-                            <a href="#" className="hover:text-blue-600 transition-colors">MySessions</a>
+                        </li>
+                        <li className="mx-4 ">
+                            <DropdownMenu>
+                                <DropdownMenuTrigger className="cursor-pointer relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:w-0 after:h-[2px] after:bg-[#886ef3] after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full">
+                                    My Sessions
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent>
+                                    <DropdownMenuItem>Active Sessions </DropdownMenuItem>
+                                    <DropdownMenuItem>History of Sessions </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+
                         </li>
                     </div>
                     <li className="ml-8">
-                        {/* Replace 'avatar' with an actual avatar image or component as needed */}
-                        <span className="inline-block w-8 h-8 bg-gray-300 rounded-full text-center leading-8">A</span>
+
+
+                        {/* <DropdownMenu>
+                            <DropdownMenuTrigger>
+                                <Avatar>
+                                    <AvatarImage src="https://github.com/shadcn.png" />
+                                    <AvatarFallback>CN</AvatarFallback>
+                                </Avatar>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent>
+                                <DropdownMenuItem>Settings </DropdownMenuItem>
+                                <DropdownMenuItem>Become Mentor </DropdownMenuItem>
+                                <DropdownMenuSeparator />
+                                <DropdownMenuItem className=' cursor-pointer '>Logout </DropdownMenuItem>
+                            </DropdownMenuContent>
+                        </DropdownMenu> */}
+
+
+
+
                     </li>
                 </ul>
             </nav>
-        </div>
+        </div >
 
         // <div className="sticky top-0 z-50 ">
         //     <nav className=" text-black py-4">

@@ -1,12 +1,18 @@
 import React from 'react'
-import { Input } from "@/components/ui/input"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from '../ui/input'
+import { Checkbox } from '@radix-ui/react-checkbox'
 import { Button } from '../ui/button'
 
-const LoginForm = () => {
+const SignupForm = () => {
     return (
-        <>
+        <div>
             <form action="" className=' p-1 flex flex-col gap-4 w-full'>
+                <div>
+                    <label htmlFor="name">Name</label>
+                    <div className='relative'>
+                        <Input placeholder='John Doe' />
+                    </div>
+                </div>
                 <div>
                     <label htmlFor="email">Email</label>
                     <div className='relative'>
@@ -27,29 +33,12 @@ const LoginForm = () => {
                         </svg>
                     </div>
                 </div>
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                        <Checkbox id="remember" />
-                        <label htmlFor="remember" className="text-sm select-none cursor-pointer">
-                            Remember me
-                        </label>
-                    </div>
-                    <div>
-                        <button
-                            type="button"
-                            className="text-[#1D00FD] text-sm hover:underline focus:outline-none"
-                        >
-                            Forgot Password?
-                        </button>
-                    </div>
 
-                </div>
 
-                <Button type='submit' className='bg-[#7B5FF1] hover:bg-[#886ef3] '>Sign in</Button>
+                <Button type='submit' className='bg-[#7B5FF1] hover:bg-[#886ef3] '>Sign up</Button>
             </form>
-
-        </>
+        </div>
     )
 }
 
-export default LoginForm
+export default SignupForm
