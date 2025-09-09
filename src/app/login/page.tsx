@@ -1,3 +1,4 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,7 +8,13 @@ import { Separator } from "@/components/ui/separator"
 import { Button } from '@/components/ui/button'
 
 
+
 const Login = () => {
+    // const session = await auth()
+
+    // if (session?.user) {
+    //     redirect('/')
+    // }
     return (
         <div className=' flex flex-col md:flex-row items-center justify-center min-h-screen  gap-20 '>
             <Card className=' bg-[#FFFFFF] flex flex-col justify-center items-center w-full md:w-96 shadow-lg'>

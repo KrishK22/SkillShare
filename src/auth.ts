@@ -3,7 +3,9 @@ import GoogleProvider from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import { prisma } from "./lib/Prisma";
 import { compare } from 'bcryptjs'
-
+import { signInSchema } from "./lib/zod";
+import { ZodError } from "zod";
+import { toast } from "sonner";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -23,37 +25,30 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           type: "password"
         }
       },
-      authorize: async (Credentials) => {
-        const email = Credentials.email as string | undefined;
-        const password = Credentials.password as string | undefined;
+      authorize: async (credentials) => {
+        try {
+          // ✅ Validate input
+          const { email, password } = await signInSchema.parseAsync(credentials);
 
+          const user = await prisma.user.findFirst({ where: { email } });
 
+          if (!user || !user.password) {
+            throw new CredentialsSignin("Invalid Email or Password");
+          }
 
-        if (!email || !password) {
-          throw new CredentialsSignin("Please provide email and password")
+          const isMatch = await compare(password, user.password);
+          if (!isMatch) {
+            throw new CredentialsSignin("Invalid Email or Password");
+          }
+
+          return { id: user.id, name: user.name, email: user.email };
+        } catch (err) {
+          if (err instanceof ZodError) {
+            // rethrow first validation error so NextAuth can pass it to client
+            throw new CredentialsSignin(err.issues[0].message);
+          }
+          throw new CredentialsSignin("Something went wrong");
         }
-
-
-        const user = await prisma.user.findFirst({
-          where: { email }
-        })
-
-
-        if (!user) {
-          throw new CredentialsSignin("Invalid Email or Password")
-        }
-        if (!user.password) {
-          throw new CredentialsSignin("Invalid Email or Password")
-        }
-
-        const isMatch = await compare(password, user.password);
-
-        if (!isMatch) {
-          throw new CredentialsSignin("Invalid Email or Password")
-        }
-
-        return { name: user.name, email: user.email }
-
       }
     }),
   ],
