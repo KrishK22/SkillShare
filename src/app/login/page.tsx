@@ -1,4 +1,3 @@
-"use client"
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -6,15 +5,18 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle, } from "@/compone
 import LoginForm from '@/components/client/LoginForm'
 import { Separator } from "@/components/ui/separator"
 import { Button } from '@/components/ui/button'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 
 
+const Login = async () => {
 
-const Login = () => {
-    // const session = await auth()
+    const session = await auth();
 
-    // if (session?.user) {
-    //     redirect('/')
-    // }
+    if (session?.user) {
+        redirect('/')
+    }
+
     return (
         <div className=' flex flex-col md:flex-row items-center justify-center min-h-screen  gap-20 '>
             <Card className=' bg-[#FFFFFF] flex flex-col justify-center items-center w-full md:w-96 shadow-lg'>

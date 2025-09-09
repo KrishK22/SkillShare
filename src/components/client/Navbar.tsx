@@ -1,7 +1,5 @@
-"use client"
 import Image from 'next/image'
 import React from 'react'
-
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -10,13 +8,26 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Button } from '../ui/button'
+import { auth, signOut } from '@/auth'
+import { redirect } from 'next/navigation'
+import LoginButton from './LoginButton'
+import LogoutButton from './LogoutButton'
 
 
+const Navbar = async () => {
 
-const Navbar = () => {
+    // const router = useRouter();
+    // const { data: session, status } = useSession();
+    const session = await auth();
+
+    // if (session?.user) {
+    //     redirect('/')
+    // }
+
+
     return (
-
-        //logo, home , matches , explore , mysessions,  avatar, 
 
         <div className="sticky top-0 z-50  ">
             <nav className="text-black">
@@ -57,24 +68,27 @@ const Navbar = () => {
                         </li>
                     </div>
                     <li className="ml-8">
+                        {
+                            session?.user ? (
+                                <DropdownMenu>
+                                    <DropdownMenuTrigger>
+                                        <Avatar>
+                                            {/* <AvatarImage src={`https://github.com/shadcn.png`} /> */}
+                                            <AvatarFallback>Cn</AvatarFallback>
+                                        </Avatar>
+                                    </DropdownMenuTrigger>
+                                    <DropdownMenuContent>
+                                        <DropdownMenuItem>Settings </DropdownMenuItem>
+                                        <DropdownMenuItem>Become Mentor </DropdownMenuItem>
+                                        <DropdownMenuSeparator />
+                                        <DropdownMenuItem className=' cursor-pointer' ><LogoutButton /> </DropdownMenuItem>
+                                    </DropdownMenuContent>
+                                </DropdownMenu>
+                            ) : (
 
-
-                        {/* <DropdownMenu>
-                            <DropdownMenuTrigger>
-                                <Avatar>
-                                    <AvatarImage src="https://github.com/shadcn.png" />
-                                    <AvatarFallback>CN</AvatarFallback>
-                                </Avatar>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent>
-                                <DropdownMenuItem>Settings </DropdownMenuItem>
-                                <DropdownMenuItem>Become Mentor </DropdownMenuItem>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem className=' cursor-pointer '>Logout </DropdownMenuItem>
-                            </DropdownMenuContent>
-                        </DropdownMenu> */}
-
-
+                                <LoginButton />
+                            )
+                        }
 
 
                     </li>

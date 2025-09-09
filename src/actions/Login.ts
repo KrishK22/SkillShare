@@ -2,9 +2,14 @@
 import { signIn } from "@/auth";
 import { CredentialsSignin } from "next-auth";
 import { toast } from "sonner";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+
 
 export const loginAction = async (email: string, password: string) => {
     try {
+
+        
         await signIn("credentials", {
             email,
             password,

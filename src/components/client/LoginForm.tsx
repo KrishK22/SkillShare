@@ -28,6 +28,7 @@ const LoginForm = () => {
         else {
             toast.success("Login successful!", { id: toastId });
             router.push('/')
+            router.refresh()
         }
     };
 
@@ -69,7 +70,7 @@ const LoginForm = () => {
 
                 </div>
 
-                <Button type='submit' className='bg-[#7B5FF1] hover:bg-[#886ef3] '>Sign in</Button>
+                <Button type='submit' className='bg-[#7B5FF1] hover:bg-[#886ef3] ' >Sign in</Button>
             </form >
 
         </>

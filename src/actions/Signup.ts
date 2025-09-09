@@ -1,4 +1,5 @@
 "use server"
+import { auth } from "@/auth";
 import { prisma } from "@/lib/Prisma";
 import { signUpSchema } from "@/lib/zod";
 import bcrypt from "bcryptjs";
@@ -7,6 +8,7 @@ import { toast } from "sonner";
 
 export const signUpAction = async (data: { name: string, email: string, password: string }) => {
     try {
+
         const { name, email, password } = data;
 
         const user = await prisma.user.findFirst({
