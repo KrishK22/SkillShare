@@ -25,14 +25,14 @@ const SignupForm = () => {
         const email = (formData.get("email") ?? "").toString();
         const password = (formData.get("password") ?? "").toString();
 
+        if (!email || !password || !name) {
+            return toast.error("Please provide all details ")
+        }
 
         const data = {
             name, email, password
         }
 
-        if (!email || !password) {
-            return toast.error("Please provide all details ")
-        }
 
 
         const result = signUpSchema.safeParse(data)
